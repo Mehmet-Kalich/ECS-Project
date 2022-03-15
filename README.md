@@ -3,10 +3,11 @@
 This is a terraform project in which a website counter was containerised and 
 provisioned as IaC. 
 
-The first step for our terraform project was architect our solution, and create 
-a brand new vpc with 3 seperate subnets. From there an application load balancer was created with a rule-based forwarding rule that listens out on port 80. The ALB was configured so that any uri with /counter would be pointed to the ECS service, while the rest would be forwarded to the S3 bucket. 
+The first step for my terraform project was to architect the solution, and create a brand new vpc with 3 seperate subnets. From there an application load balancer was created with a rule-based forwarding rule that listens out on port 80. The ALB was configured so that any uri with /counter would be pointed to the ECS service, while the rest would be forwarded to the S3 bucket. 
 
-With regards to the JS code in the source code, a link would have been fetched from a route 53 cname record to apply on the domain to the AWS Application Load Balancer - which would have updated the front end HTML for the visitor counter on the site. 
+All of the front-end assets (html, css, image) were placed in an S3 bucket due to their static nature. 
+
+With regards to the JS code in the S3 bucket, a link would have been fetched from a route 53 cname record to apply on the domain to the AWS Application Load Balancer - which would have updated the front end HTML for the visitor counter on the site. 
 
 There was a requirement for an IAM user with a dynamodb permission role attached to it. The ECS was configured with 3 parts - the task, the service and the cluster using the FARGATE severless setting. For the time being, a single task definition was created with the potential for more to be added. 
 
@@ -20,7 +21,7 @@ If we used github actions, we would have applied a trigger on the master branch,
 The infrastructure diagram below could have been implemented using diagrams as code (DAC) to give the benefit of versioning infrastructure design changes. 
 
 
-![infrastrure](./assets/ECS-Project.png)
+![infrastructure](./assets/ECS-Project.png)
 
 ## Terraform QuickStart
 
