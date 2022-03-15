@@ -44,15 +44,15 @@ The infrastructure diagram below could have been implemented using diagrams as c
 
 1. get authentication
     ```shell
-    aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 517586233148.dkr.ecr.us-east-1.amazonaws.com
+    aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin account_id.dkr.ecr.us-east-1.amazonaws.com
     ```
 
 2. Build image (make sure you are in same directory as counter)
     ```shell
-    docker build . -t 517586233148.dkr.ecr.us-east-1.amazonaws.com/counter
+    docker build . -t account_id.dkr.ecr.us-east-1.amazonaws.com/counter
     ```
 
 3. Push image to ecr
    ```shell
-   docker push 517586233148.dkr.ecr.us-east-1.amazonaws.com/counter
+   docker push account_id.dkr.ecr.us-east-1.amazonaws.com/counter
    ```
