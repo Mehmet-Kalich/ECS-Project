@@ -1,3 +1,7 @@
+
+#A prebuilt YML workflow which runs on ubuntu, lints the code in the repository, configures the aws credentials
+#using github repository secrets, builds and pushes the new commit from a dockerfile to the Elastic Container 
+#registry. Before filling in and deploying the new image ID to the ECS Task Definition. 
 ---
 name: "workflow"
 

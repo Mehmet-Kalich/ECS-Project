@@ -12,11 +12,12 @@ client = boto3.client('dynamodb', config=my_config)
 TableName = 'cloud-resume'
 
 #Flask routes application to root-url, as well as the set-counter (increment) function
-#get counter function
+#get counter function.
 @app.route("/")
 def home():
     return 'healthy'
 
+#Flask routes set-counter and sets up function which takes the view-count database from dynamodb and increments it.
 @app.route("/set-counter")
 def set_counter():
      
@@ -41,6 +42,8 @@ def set_counter():
             }
         }
 
+#Get counter option simply returns the view-count item table as seen in both dynamo DB table + html 
+#and returns a http ok 200 code. 
 @app.route("/get-counter")
 def get_counter():
     data = client.get_item(
@@ -59,5 +62,6 @@ def get_counter():
             "Access-Control-Allow-Origin" : "*"
             }
         }
+#Using flask, the local port is configured with this main.py file
 if __name__ == '__main__':
     app.run(port=8080)
